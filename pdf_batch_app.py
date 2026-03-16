@@ -34,15 +34,6 @@ if "login" not in st.session_state:
 if not st.session_state["login"]:
     login()
     st.stop()
-# ---------- PORT CHANGE LOCAL HOST ----------
-PORT = 8506
-LOCAL_URL = f"http://localhost:{PORT}"
-
-st.markdown(f"""
-### 🌐 App Running On
-
-🔗 **{LOCAL_URL}**
-""")
 
 st.set_page_config(page_title="PDF Toolkit Pro", page_icon="📄", layout="wide")
 
