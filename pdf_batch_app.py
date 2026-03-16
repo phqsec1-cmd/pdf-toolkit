@@ -6,14 +6,16 @@ import time
 #-----------------LOGIN CODE-------------
 import streamlit as st
 
+# ---- USER DATABASE ----
 users = {
-    "admin":"1234",
-    "ashu":"police"
+    "admin": "1234",
+    "ashu": "police"
 }
 
+# ---- LOGIN FUNCTION ----
 def login():
 
-    st.title("Login")
+    st.title("🔐 Login")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -23,18 +25,37 @@ def login():
         if username in users and users[username] == password:
 
             st.session_state["login"] = True
+            st.session_state["user"] = username
+            st.success("Login Successful")
+            st.rerun()
 
         else:
+            st.error("❌ Invalid Username or Password")
 
-            st.error("Invalid Login")
-
+# ---- SESSION STATE ----
 if "login" not in st.session_state:
     st.session_state["login"] = False
 
+# ---- LOGIN PAGE ----
 if not st.session_state["login"]:
     login()
     st.stop()
 
+# ---- APP AFTER LOGIN ----
+
+st.sidebar.success(f"👤 Logged in as: {st.session_state['user']}")
+
+if st.sidebar.button("Logout"):
+    st.session_state["login"] = False
+    st.rerun()
+
+# ---- MAIN APP ----
+st.title("📄 PDF Toolkit Dashboard")
+
+st.write("Welcome to the PDF Toolkit App 🚀")
+
+st.info("अब यहाँ आप अपना पूरा PDF Toolkit Code डाल सकते हैं")
+#---------------------------Other----------------------
 st.set_page_config(page_title="PDF Toolkit Pro", page_icon="📄", layout="wide")
 
 # ---------- ANIMATED CSS ----------
