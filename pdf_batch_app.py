@@ -6,8 +6,8 @@ import time
 
 # ---- USER DATABASE ----
 users = {
-    "admin": "1234",
-    "ashu": "police"
+    "Admin": "admin@1234",
+    "Ashu": "police@1234"
 }
 
 # ---- LOGIN FUNCTION ----
