@@ -3,8 +3,6 @@ import fitz
 from PIL import Image
 import io
 import time
-#-----------------LOGIN CODE-------------
-import streamlit as st
 
 # ---- USER DATABASE ----
 users = {
