@@ -3,7 +3,37 @@ import fitz
 from PIL import Image
 import io
 import time
+#-----------------LOGIN CODE-------------
+import streamlit as st
 
+users = {
+    "admin":"1234",
+    "ashu":"police"
+}
+
+def login():
+
+    st.title("Login")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+
+        if username in users and users[username] == password:
+
+            st.session_state["login"] = True
+
+        else:
+
+            st.error("Invalid Login")
+
+if "login" not in st.session_state:
+    st.session_state["login"] = False
+
+if not st.session_state["login"]:
+    login()
+    st.stop()
 # ---------- PORT CHANGE LOCAL HOST ----------
 PORT = 8506
 LOCAL_URL = f"http://localhost:{PORT}"
